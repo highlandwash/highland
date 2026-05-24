@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Highland Laundromat — Family-Owned Coin Laundry in Malden, MA</title>
+<meta name="description" content="Highland Laundromat at 283 Highland Ave, Malden MA. Family-owned coin-op laundromat with brand new Dexter dryers and LG washers. Wash, dry & fold service available — next-day and same-day." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Highland Laundromat — Malden, MA" />
+<meta property="og:description" content="Family-owned laundromat with brand new Dexter dryers and LG washers. Wash, dry & fold service available." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="images/exterior.jpg" />
+
+<!-- Fonts: Pacifico to match the window script + Fraunces for elegant body display + Inter for utility -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --brand-blue: #1f4ea8;          /* deep blue from the pricing poster */
+    --brand-blue-dark: #14367a;
+    --brand-blue-light: #6ea8e8;
+    --brand-yellow: #f5c518;        /* yellow from the poster */
+    --brand-orange: #d18a3a;        /* wood/orange columns inside the shop */
+    --bubble-1: #bfe2ff;
+    --bubble-2: #87c4ef;
+    --bubble-3: #4a9ede;
+    --bg: #fbf8f3;                  /* warm off-white */
+    --ink: #1a1f2e;
+    --ink-soft: #4a5468;
+    --line: #e4dccd;
+    --brick: #8b3a2a;
+    --shadow-sm: 0 2px 8px rgba(20, 54, 122, 0.06);
+    --shadow-md: 0 10px 30px rgba(20, 54, 122, 0.10);
+    --shadow-lg: 0 20px 60px rgba(20, 54, 122, 0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  img { max-width: 100%; display: block; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- NAVBAR ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(251, 248, 243, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .brand {
+    font-family: 'Pacifico', cursive;
+    font-size: 26px;
+    color: var(--brand-blue);
+    line-height: 1;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  .nav-links a {
+    color: var(--ink-soft);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--brand-blue); }
+  .nav-cta {
+    background: var(--brand-blue);
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .nav-cta:hover {
+    background: var(--brand-blue-dark);
+    transform: translateY(-1px);
+  }
+  .menu-btn { display: none; background: none; border: none; cursor: pointer; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      padding: 24px;
+      gap: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .menu-btn { display: block; font-size: 24px; color: var(--brand-blue); }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    padding: 100px 0 80px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #eaf3ff 0%, var(--bg) 100%);
+  }
+
+  /* Animated bubble decoration */
+  .bubbles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), var(--bubble-2) 60%, var(--bubble-3));
+    opacity: 0.55;
+    animation: float 12s ease-in-out infinite;
+  }
+  .bubble:nth-child(1) { width: 80px; height: 80px; left: 5%; top: 20%; animation-delay: 0s; }
+  .bubble:nth-child(2) { width: 50px; height: 50px; left: 12%; top: 65%; animation-delay: 1s; }
+  .bubble:nth-child(3) { width: 120px; height: 120px; right: 8%; top: 15%; animation-delay: 2s; opacity: 0.4; }
+  .bubble:nth-child(4) { width: 35px; height: 35px; right: 18%; top: 55%; animation-delay: 3s; }
+  .bubble:nth-child(5) { width: 65px; height: 65px; right: 4%; top: 75%; animation-delay: 4s; }
+  .bubble:nth-child(6) { width: 25px; height: 25px; left: 40%; top: 12%; animation-delay: 5s; }
+  .bubble:nth-child(7) { width: 90px; height: 90px; left: 25%; bottom: 8%; animation-delay: 1.5s; opacity: 0.35; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    33% { transform: translateY(-25px) translateX(10px); }
+    66% { transform: translateY(15px) translateX(-10px); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  @media (max-width: 900px) {
+    .hero-content { grid-template-columns: 1fr; gap: 40px; }
+    .hero { padding: 60px 0 60px; }
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brand-blue);
+    background: rgba(31, 78, 168, 0.08);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+
+  h1.hero-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.05;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  h1.hero-title .script {
+    font-family: 'Pacifico', cursive;
+    color: var(--brand-blue);
+    font-weight: 400;
+    font-size: 1.05em;
+    display: block;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+
+  .hero p.lead {
+    font-size: 19px;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    max-width: 540px;
+  }
+
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--brand-blue);
+    color: white;
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-primary:hover {
+    background: var(--brand-blue-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .btn-secondary {
+    background: white;
+    color: var(--brand-blue);
+    border-color: var(--brand-blue);
+  }
+  .btn-secondary:hover {
+    background: var(--brand-blue);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .hero-image {
+    position: relative;
+  }
+  .hero-image .frame {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    aspect-ratio: 4/3;
+  }
+  .hero-image .frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section { padding: 90px 0; position: relative; }
+  @media (max-width: 768px) { section { padding: 60px 0; } }
+
+  .section-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 60px;
+  }
+  .section-header .eyebrow { margin-bottom: 16px; }
+  .section-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+  .section-header p {
+    font-size: 18px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- STORY (about) ---------- */
+  .story { background: white; }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  @media (max-width: 900px) { .story-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .story-grid img {
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    width: 100%;
+  }
+  .story-text h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  .story-text p {
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .story-text p strong { color: var(--ink); }
+
+  /* ---------- EQUIPMENT ---------- */
+  .equipment {
+    background: linear-gradient(180deg, var(--bg) 0%, #f0e8da 100%);
+    position: relative;
+  }
+  .equip-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 900px) { .equip-grid { grid-template-columns: 1fr; } }
+
+  .equip-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .equip-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+  }
+  .equip-card .img-wrap {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #eee;
+  }
+  .equip-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .equip-card:hover img { transform: scale(1.04); }
+
+  .equip-card .body {
+    padding: 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .equip-card .tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+    margin-bottom: 10px;
+  }
+  .equip-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .equip-card p {
+    color: var(--ink-soft);
+    font-size: 15px;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services { background: white; }
+  .service-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+  @media (max-width: 768px) { .service-row { grid-template-columns: 1fr; } }
+
+  .service-card {
+    padding: 40px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #f6f1e5 0%, #fbf8f3 100%);
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card.featured {
+    background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-blue-dark) 100%);
+    color: white;
+    border: none;
+  }
+  .service-card.featured h3,
+  .service-card.featured .price-big { color: white; }
+
+  .service-card .icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: rgba(31, 78, 168, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brand-blue);
+    margin-bottom: 20px;
+  }
+  .service-card.featured .icon {
+    background: rgba(255,255,255,0.15);
+    color: white;
+  }
+
+  .service-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  .service-card .desc {
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+    font-size: 15px;
+  }
+  .service-card.featured .desc { color: rgba(255,255,255,0.85); }
+
+  .price-big {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--brand-blue);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .price-unit { font-size: 16px; font-weight: 500; color: var(--ink-soft); }
+  .service-card.featured .price-unit { color: rgba(255,255,255,0.8); }
+  .price-note {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 8px;
+  }
+  .service-card.featured .price-note { color: rgba(255,255,255,0.8); }
+
+  /* Bedding pricing card */
+  .bedding {
+    background: linear-gradient(135deg, #fff 0%, #f6f1e5 100%);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    padding: 48px;
+    box-shadow: var(--shadow-sm);
+  }
+  @media (max-width: 768px) { .bedding { padding: 28px; } }
+
+  .bedding-header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .bedding-header h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .bedding-header p { color: var(--ink-soft); }
+
+  .bedding-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+  @media (max-width: 768px) {
+    .bedding-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .price-tile {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px 14px;
+    text-align: center;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .price-tile:hover {
+    transform: translateY(-3px);
+    border-color: var(--brand-blue);
+  }
+  .price-tile .size {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .price-tile .amt {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--brand-blue);
+    line-height: 1;
+  }
+
+  .bedding-extras {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding-top: 30px;
+    border-top: 1px dashed var(--line);
+  }
+  @media (max-width: 768px) { .bedding-extras { grid-template-columns: 1fr; } }
+  .extras-list h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+  .extras-list ul { list-style: none; }
+  .extras-list li {
+    padding: 8px 0;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+  }
+  .extras-list li:last-child { border-bottom: none; }
+  .extras-list li .plus {
+    font-weight: 700;
+    color: var(--brand-blue);
+  }
+  .extras-callout {
+    background: rgba(245, 197, 24, 0.15);
+    border-left: 4px solid var(--brand-yellow);
+    padding: 18px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .extras-callout strong { display: block; margin-bottom: 6px; }
+
+  /* ---------- VISIT (location) ---------- */
+  .visit {
+    background: linear-gradient(180deg, #f0e8da 0%, var(--bg) 100%);
+  }
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  @media (max-width: 900px) { .visit-grid { grid-template-columns: 1fr; } }
+
+  .visit-info h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    margin-bottom: 12px;
+    line-height: 1.15;
+  }
+  .visit-info > p {
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+  .info-rows { display: grid; gap: 18px; margin-bottom: 32px; }
+  .info-row {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .info-row .ico {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brand-blue);
+    flex-shrink: 0;
+  }
+  .info-row .label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    margin-bottom: 2px;
+  }
+  .info-row .value {
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .info-row a.value:hover { color: var(--brand-blue); }
+
+  .visit-image {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    aspect-ratio: 4/3;
+  }
+  .visit-image img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.7);
+    padding: 60px 0 30px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+  footer .brand { color: white; margin-bottom: 14px; }
+  footer p { font-size: 14px; line-height: 1.7; }
+  footer h4 {
+    font-family: 'Fraunces', serif;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  footer ul { list-style: none; }
+  footer ul li { padding: 4px 0; font-size: 14px; }
+  footer ul li a { transition: color 0.2s; }
+  footer ul li a:hover { color: white; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ---------- ANIMATIONS ON SCROLL ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="container">
+    <a href="#" class="brand">Highland Laundromat</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#story">Our Story</a>
+      <a href="#equipment">Equipment</a>
+      <a href="#services">Services</a>
+      <a href="#visit">Visit</a>
+      <a href="#visit" class="nav-cta">Visit Us</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="bubbles" aria-hidden="true">
+    <span class="bubble"></span>
+    <span class="bubble"></span>
+    <span class="bubble"></span>
+    <span class="bubble"></span>
+    <span class="bubble"></span>
+    <span class="bubble"></span>
+    <span class="bubble"></span>
+  </div>
+
+  <div class="container hero-content">
+    <div>
+      <span class="eyebrow">Family-owned · Malden, MA</span>
+      <h1 class="hero-title">
+        <span class="script">Highland</span>
+        Laundromat
+      </h1>
+      <p class="lead">
+        A clean, welcoming neighborhood laundromat on Highland Ave —
+        now featuring brand new <strong>LG washing machines</strong> and
+        <strong>Dexter dryers</strong>. Self-serve or let us handle it
+        with our Wash, Dry &amp; Fold service.
+      </p>
+      <div class="hero-ctas">
+        <a href="#services" class="btn btn-primary">See Our Services →</a>
+        <a href="#visit" class="btn btn-secondary">Hours &amp; Directions</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="frame">
+        <img src="images/hero.jpg" alt="Inside Highland Laundromat — clean tile floor, sorting tables, and rows of washers" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ STORY ============ -->
+<section id="story" class="story">
+  <div class="container">
+    <div class="story-grid">
+      <img src="images/logo-window.jpg" alt="Highland Laundromat hand-lettered window logo" class="reveal" />
+      <div class="story-text reveal">
+        <span class="eyebrow">Our Story</span>
+        <h2>A family-owned spot, taking care of your laundry like our own.</h2>
+        <p>
+          Highland Laundromat has served Malden families for years
+          right at the corner of Highland Ave. We&rsquo;re a small,
+          <strong>family-run business</strong> — when you come in, you&rsquo;re
+          talking to the owners.
+        </p>
+        <p>
+          We&rsquo;ve recently invested in our space with
+          <strong>brand new LG commercial washers</strong> and a full
+          lineup of <strong>brand new Dexter stack dryers</strong>, so
+          your loads come out cleaner, faster, and with less hassle. The
+          shop is bright, the floor is clean, and there&rsquo;s always
+          someone friendly nearby if you need a hand.
+        </p>
+        <p>
+          Whether you&rsquo;re running through a quick load or dropping
+          off the whole week&rsquo;s laundry, we&rsquo;re glad to see
+          you.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EQUIPMENT ============ -->
+<section id="equipment" class="equipment">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">What's New</span>
+      <h2>Fresh upgrades to make laundry day easier.</h2>
+      <p>We&rsquo;ve invested in brand new LG washers and Dexter dryers, alongside our 55 lb. giant-load and 45 lb. Dexter machines &mdash; so you have the right size washer for every load.</p>
+    </div>
+
+    <div class="equip-grid">
+      <div class="equip-card reveal">
+        <div class="img-wrap">
+          <img src="images/giant-washers.jpg" alt="Brand new LG commercial washing machines at Highland Laundromat" />
+        </div>
+        <div class="body">
+          <span class="tag">New Installation</span>
+          <h3>LG Commercial Washers</h3>
+          <p>A full lineup of brand new LG washers — efficient, gentle on fabrics, and built for everyday use. Perfect for regular loads.</p>
+        </div>
+      </div>
+
+      <div class="equip-card reveal">
+        <div class="img-wrap">
+          <img src="images/dryers.jpg" alt="Brand new Dexter stack dryers numbered 1 through 16" />
+        </div>
+        <div class="body">
+          <span class="tag">New Installation</span>
+          <h3>Dexter Stack Dryers</h3>
+          <p>Powerful new Dexter Express dryers get loads dry quickly so you&rsquo;re not stuck waiting. Plenty of machines, even at peak hours.</p>
+        </div>
+      </div>
+
+      <div class="equip-card reveal">
+        <div class="img-wrap">
+          <img src="images/giant-load-55lb.jpg" alt="55 lb. giant load Dexter washing machines with sign overhead" />
+        </div>
+        <div class="body">
+          <span class="tag">High Capacity</span>
+          <h3>55 lb. Giant-Load Washers</h3>
+          <p>For comforters, blankets, sleeping bags, and big family loads. Wash everything in a single drop with our huge Dexter machines.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Services &amp; Pricing</span>
+      <h2>Self-serve, or let us do it for you.</h2>
+      <p>Use our machines yourself, or drop your laundry off and we&rsquo;ll wash, dry, and fold it for you.</p>
+    </div>
+
+    <!-- Wash Dry Fold cards -->
+    <div class="service-row">
+      <div class="service-card reveal">
+        <div class="icon">
+          <!-- shirt icon -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+        </div>
+        <h3>Wash, Dry &amp; Fold</h3>
+        <p class="desc">Drop your laundry with us and pick it up clean, dry, and neatly folded — ready to put away.</p>
+        <div class="price-big">$0.95<span class="price-unit"> / lb</span></div>
+        <p class="price-note">Next-day service · 15 lb minimum</p>
+      </div>
+
+      <div class="service-card featured reveal">
+        <div class="icon">
+          <!-- lightning icon -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>Same-Day Wash &amp; Fold</h3>
+        <p class="desc">Need it back today? Drop it off in the morning and we&rsquo;ll have it folded and ready before close.</p>
+        <div class="price-big">$1.25<span class="price-unit"> / lb</span></div>
+        <p class="price-note">Same-day service · 15 lb minimum</p>
+      </div>
+    </div>
+
+    <!-- Bedding pricing block -->
+    <div class="bedding reveal">
+      <div class="bedding-header">
+        <span class="eyebrow">Comforters, Blankets &amp; Bedding</span>
+        <h3>Wash &amp; Dry Pricing</h3>
+        <p>Flat-rate pricing for the big stuff. We&rsquo;ll handle even your largest comforters in our 55 lb. machines.</p>
+      </div>
+
+      <div class="bedding-grid">
+        <div class="price-tile"><div class="size">California King</div><div class="amt">$30</div></div>
+        <div class="price-tile"><div class="size">King</div><div class="amt">$25</div></div>
+        <div class="price-tile"><div class="size">Queen</div><div class="amt">$23</div></div>
+        <div class="price-tile"><div class="size">Full</div><div class="amt">$20</div></div>
+        <div class="price-tile"><div class="size">Twin</div><div class="amt">$16</div></div>
+      </div>
+
+      <div class="bedding-extras">
+        <div class="extras-list">
+          <h4>Additional Services</h4>
+          <ul>
+            <li><span>Down / Feather Items</span><span class="plus">+ $5</span></li>
+            <li><span>Low-Heat Drying</span><span class="plus">+ $5</span></li>
+            <li><span>Fabric Softener or Bleach</span><span class="plus">+ $3</span></li>
+          </ul>
+        </div>
+        <div class="extras-callout">
+          <strong>💡 Special Savings</strong>
+          Comforters washed together with regular wash &amp; fold clothes may receive a discount — just ask our staff for details!
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section id="visit" class="visit">
+  <div class="container">
+    <div class="visit-grid">
+      <div class="visit-info reveal">
+        <span class="eyebrow">Come See Us</span>
+        <h2>Stop by Highland Laundromat</h2>
+        <p>We&rsquo;re right at 283 Highland Ave, next to DiPietro&rsquo;s Pizza. Plenty of parking out front.</p>
+
+        <div class="info-rows">
+          <div class="info-row">
+            <div class="ico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="label">Address</div>
+              <a href="https://www.google.com/maps/search/?api=1&query=283+Highland+Ave+Malden+MA+02148" target="_blank" rel="noopener" class="value">283 Highland Ave, Malden, MA 02148</a>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="ico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="label">Hours</div>
+              <div class="value">Open Daily, 7:00 AM &ndash; 10:00 PM<br/><span style="font-size:14px;color:var(--ink-soft);font-weight:400;">Last wash at 8:45 PM</span></div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="ico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="label">Phone</div>
+              <a href="tel:5083991872" class="value">(508) 399-1872</a>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="ico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+            </div>
+            <div>
+              <div class="label">On-site</div>
+              <div class="value">Free WiFi on site · Plenty of waiting seats · Detergent &amp; supplies for sale · Vending machine</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=283+Highland+Ave+Malden+MA+02148" target="_blank" rel="noopener" class="btn btn-primary">Get Directions →</a>
+        </div>
+      </div>
+
+      <div class="visit-image reveal">
+        <img src="images/exterior.jpg" alt="Highland Laundromat storefront on Highland Ave in Malden, MA" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand">Highland Laundromat</div>
+        <p>Family-owned, neighborhood laundromat in Malden, MA. Brand new LG washers, Dexter dryers, and friendly wash-dry-fold service.</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>283 Highland Ave</li>
+          <li>Malden, MA 02148</li>
+          <li><a href="tel:5083991872">(508) 399-1872</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#equipment">Equipment</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#visit">Hours &amp; Location</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Highland Laundromat. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  // Close mobile menu on link click
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Year in footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
